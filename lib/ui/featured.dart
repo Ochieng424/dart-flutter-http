@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Featured extends StatelessWidget {
   @override
@@ -7,6 +9,7 @@ class Featured extends StatelessWidget {
       appBar: AppBar(
         title: Text("Featured Products"),
       ),
+      body: Container(),
     );
   }
 }
