@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class Featured extends StatefulWidget {
+  static const String routeName = "/featured";
   @override
   _FeaturedState createState() => _FeaturedState();
 }
@@ -40,17 +41,20 @@ class _FeaturedState extends State<Featured> {
                     style: TextStyle(color: Colors.blue),
                   ),
                   trailing: Icon(Icons.shopping_cart),
-                  leading: Image.network(
-                    data[index]['files'][0]['filePath'],
-                    loadingBuilder: (context, child, progress) {
-                      return progress == null
-                          ? child
-                          : CircularProgressIndicator();
-                    },
-                    width: 100,
-                    height: 100,
-                    semanticLabel: data[index]['title'],
-                  ),
+                  leading: Container(
+                    width: 50,
+                    height: 50,
+                    child: Image.network(
+                      data[index]['files'][0]['filePath'],
+                      loadingBuilder: (context, child, progress) {
+                        return progress == null
+                            ? child
+                            : CircularProgressIndicator();
+                      },
+                      fit: BoxFit.contain,
+                      semanticLabel: data[index]['title'],
+                    ),
+                  )
                 );
               },
               itemCount: data.length,
